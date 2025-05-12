@@ -97,7 +97,7 @@ process_list=(
   "nm-applet"
   "dunst"
   "sxhkd"
-  "polybar"
+  "polybar -q -r main -c ~/.config/polybar/config.ini"
 #  "picom"
   "lxde-settings-daemon"
   "xss-lock --ignore-sleep -- slock"  # Add --ignore-sleep for robustness
