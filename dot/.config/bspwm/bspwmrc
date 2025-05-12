@@ -8,6 +8,7 @@ export XDG_CURRENT_DESKTOP=bspwm  # or "KDE" if needed for some apps
 export XDG_DATA_DIRS="/usr/share:/usr/local/share:$HOME/.local/share"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK_THEME=Flat-Remix-GTK-Red-Darkest
+export QT_STYLE_OVERRIDE=Fusion
 gsettings set org.gnome.desktop.interface icon-theme 'Flat-Remix-Red-Dark'
 
 # apt without dialogs
@@ -23,10 +24,10 @@ bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
 #border colors
 bspc config focused_border_color "#9d0000"
+
 #border width, gap, ratio etc...
 bspc config border_width         2 
 bspc config window_gap           0
-
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
@@ -43,17 +44,15 @@ bspc config honor_size_hints true
 
 #rules for programs
 bspc rule -a "jadx-gui" state=floating
-bspc rule -a "burp-StartBurp" state=tiled
 bspc rule -a "Zathura" state=tiled
 bspc rule -a "Maltego state"=floating #rectangle=1280x800+160+50
-bspc rule -a "Authy Desktop" state=tiled 
 bspc rule -a "tk" state=floating 
 bspc rule -a "Tk" state=floating 
 bspc rule -a "megasync" state=tiled
 bspc rule -a "pavucontrol" state=floating rectangle=1280x800+160+50
-#bspc rule -a "*" title="tui-network" state=floating rectangle=1280x800+160+50
+bspc rule -a "Burp Suite Community Edition" state=floating #rectangle=1280x800+160+50
+bspc rule -a "burp-StartBurp" title="Settings" state=floating #rectangle=1286x700+155+112
 bspc rule -a "Color_picker_gui.py" state=floating rectangle=400x400
-bspc rule -a "Xfce4-notes" state=floating sticky=on rectangle=400x400
 bspc rule -a "Xfce4-notes" state=floating sticky=on rectangle=400x400
 
 #scripts

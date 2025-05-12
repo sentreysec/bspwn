@@ -69,7 +69,8 @@ xset r rate 150 25
 # redshift -O 4500
 
 # Enable DPMS (timeouts in seconds)
-xset dpms 180 600 900  # Standby: 3m, Suspend: 10m, Off: 15m
+# this setting doesn't suspend or shutdowns the system only the display
+xset dpms 150 300 600  # display-dims, display turns off, display powered off
 
 ### Process Management
 
@@ -90,8 +91,8 @@ pkill -f "xss-lock.*slock" || true  # Force-kill existing instances
 pkill -f xfce4-notifyd || true#
 # Define processes (use quotes for commands with arguments)
 process_list=(
-  "kdeconnectd"
-  "kdeconnect-indicator"
+#  "kdeconnectd"
+#  "kdeconnect-indicator"
   "lxpolkit"
   "xfce4-clipman"
   "nm-applet"
