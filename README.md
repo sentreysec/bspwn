@@ -1,1 +1,1 @@
-# bspwnx
+# bspwn
