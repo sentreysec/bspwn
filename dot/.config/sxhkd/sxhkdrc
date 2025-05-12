@@ -4,8 +4,11 @@
 # --- custom bindings ---
 
 # Thunar
-super + F4
-  thunar
+#super + F4
+#  thunar
+
+super + shift + f
+  firefox
 
 # terminal emulator
 super + Return
