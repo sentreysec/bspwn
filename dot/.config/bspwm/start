@@ -19,7 +19,7 @@
 
 # dynamic
 #feh --bg-fill ~/Pictures/wallpapers/x.png
-hsetroot -solid "#9d0000" -center "$HOME/.config/bspwm/_img/seraphv.png" 
+hsetroot -solid "#9d0000" -center "$HOME/.config/bspwm/_img/seraphw.png" 
 
 
 function _background(){
