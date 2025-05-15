@@ -50,9 +50,19 @@ fi
 #echo "$icon $total_capacity%"
 echo "$icon" # $total_capacity%"
 
-# Optional: Detailed status on click
+## Optional: Detailed status on click
+#if [[ "$1" == "--details" ]]; then
+#    echo "BAT0: $bat0_capacity% ($bat0_status)"
+#    echo "BAT1: $bat1_capacity% ($bat1_status)"
+#    [[ $ac_status -eq 1 ]] && echo "AC: Connected" || echo "AC: Disconnected"
+#fi
+
 if [[ "$1" == "--details" ]]; then
-    echo "BAT0: $bat0_capacity% ($bat0_status)"
-    echo "BAT1: $bat1_capacity% ($bat1_status)"
-    [[ $ac_status -eq 1 ]] && echo "AC: Connected" || echo "AC: Disconnected"
+    message=$(printf "BAT0: %s%% (%s)\nBAT1: %s%% (%s)\nAC: %s" \
+              "$bat0_capacity" "$bat0_status" \
+              "$bat1_capacity" "$bat1_status" \
+              "$([[ $ac_status -eq 1 ]] && echo "Connected" || echo "Disconnected")")
+    notify-send "Battery Details" "$message"
 fi
+
+
