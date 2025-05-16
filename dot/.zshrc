@@ -459,7 +459,7 @@ alias lport='setg lport'
 function apt()
 {
   export DEBIAN_FRONTEND=noninteractive
-  /usr/bin/apt -y "$@"
+  sudo /usr/bin/apt -y "$@"
 }
 
 function clear_all(){
