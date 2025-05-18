@@ -4,10 +4,7 @@
 
 # Set screen resolution
 # xrandr -s 1600x900
-
-
 #feh --bg-fill $HOME/.config/bspwm/_img/seraph.png
-
 ### Wallpaper
 # Use feh to set image wallpaper, example
 #feh --bg-fill ~/Pictures/wallpapers/bitmap.png
@@ -47,7 +44,7 @@ function _background(){
 
 ### Mouse and Touchpad Settings
 # TrackPoint settings
-xinput set-prop 'TPPS/2 IBM TrackPoint' 'libinput Accel Speed' 0.2 &
+xinput set-prop 'TPPS/2 IBM TrackPoint' 'libinput Accel Speed' 0.1 &
 
 # Touchpad settings for T470
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' -0.1 &
@@ -108,7 +105,5 @@ Restart each process
 for process in "${process_list[@]}"; do
   restart_process $process
 done
-
-
 
 ############################################################
