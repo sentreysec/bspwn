@@ -123,20 +123,20 @@ XF86AudioMicMute
 XF86AudioRaiseVolume
   pamixer -i 5 && \
   VOL=$(pamixer --get-volume) && \
-  notify-send -u low -h string:x-canonical-private-synchronous:volume "Volume" "Volume: $VOL%" -h int:value:$VOL -t 1000
+  notify-send -u low -h string:x-canonical-private-synchronous:volume "Volume: $VOL%" -h int:value:$VOL -t 1000
 
 XF86AudioLowerVolume
   pamixer -d 5 && \
   VOL=$(pamixer --get-volume) && \
-  notify-send -u low -h string:x-canonical-private-synchronous:volume "Volume" "Volume: $VOL%" -h int:value:$VOL -t 1000
+  notify-send -u low -h string:x-canonical-private-synchronous:volume "Volume: $VOL%" -h int:value:$VOL -t 1000
 
 XF86AudioMute
   pamixer -t && \
   if [ $(pamixer --get-mute) = "true" ]; then \
-    notify-send -u low -h string:x-canonical-private-synchronous:volume "Volume" "Muted" -t 1000; \
+    notify-send -u low -h string:x-canonical-private-synchronous:volume "Muted: " -t 1000; \
   else \
     VOL=$(pamixer --get-volume) && \
-    notify-send -u low -h string:x-canonical-private-synchronous:volume "Volume" "Volume: $VOL%" -h int:value:$VOL -t 1000; \
+    notify-send -u low -h string:x-canonical-private-synchronous:volume "Volume: $VOL%" -h int:value:$VOL -t 1000; \
   fi
 
 XF86MonBrightnessUp
@@ -144,14 +144,14 @@ XF86MonBrightnessUp
   BRIGHT=$(brightnessctl g) && \
   MAX=$(brightnessctl m) && \
   PERCENT=$((BRIGHT * 100 / MAX)) && \
-  notify-send -u low -h string:x-canonical-private-synchronous:brightness "Brightness" "Brightness: $PERCENT%" -h int:value:$PERCENT -t 1000
+  notify-send -u low -h string:x-canonical-private-synchronous:brightness "Brightness: $PERCENT%" -h int:value:$PERCENT -t 1000
 
 XF86MonBrightnessDown
   brightnessctl s 10%- && \
   BRIGHT=$(brightnessctl g) && \
   MAX=$(brightnessctl m) && \
   PERCENT=$((BRIGHT * 100 / MAX)) && \
-  notify-send -u low -h string:x-canonical-private-synchronous:brightness "Brightness" "Brightness: $PERCENT%" -h int:value:$PERCENT -t 1000
+  notify-send -u low -h string:x-canonical-private-synchronous:brightness "Brightness: $PERCENT%" -h int:value:$PERCENT -t 1000
 
 
 
