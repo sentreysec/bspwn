@@ -5,7 +5,7 @@ show_brightness_notification() {
   BRIGHT=$(brightnessctl g)
   MAX=$(brightnessctl m)
   PERCENT=$((BRIGHT * 100 / MAX))
-  notify-send -u low -h string:x-canonical-private-synchronous:brightness "Brightness" "Brightness: $PERCENT%" -h int:value:$PERCENT -t 1000
+  notify-send -u low -h string:x-canonical-private-synchronous:brightness "Brightness: $PERCENT%" -h int:value:$PERCENT -t 1000
 }
 
 # Handle different actions

@@ -3,10 +3,10 @@
 # Function to display volume notification
 show_volume_notification() {
   if [ "$(pamixer --get-mute)" = "true" ]; then
-    notify-send -u low -h string:x-canonical-private-synchronous:volume "Volume" "Muted" -t 1000
+    notify-send -u low -h string:x-canonical-private-synchronous:volume "Muted" -t 1000
   else
     VOL=$(pamixer --get-volume)
-    notify-send -u low -h string:x-canonical-private-synchronous:volume "Volume" "Volume: $VOL%" -h int:value:$VOL -t 1000
+    notify-send -u low -h string:x-canonical-private-synchronous:volume "Volume: $VOL%" -h int:value:$VOL -t 1000
   fi
 }
 

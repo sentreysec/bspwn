@@ -96,9 +96,9 @@ process_list=(
   "dunst"
   "sxhkd"
   "polybar -q -r main -c ~/.config/polybar/config.ini"
-#  "picom"
   "lxde-settings-daemon"
   "xss-lock --ignore-sleep -- slock"  # Add --ignore-sleep for robustness
+  "xfce4-notes"
 )
 
 Restart each process
