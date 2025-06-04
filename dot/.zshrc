@@ -88,7 +88,8 @@ if [ "$color_prompt" = yes ]; then
     # Define ANSI color codes using tput
     bg_color='%{%K{#760000}%}'
     fg_color='%{%F{#ced4da}%}'
-    fg_color_red='%{%F{#ff0000}%}'
+    #fg_color_red='%{%F{#ff0000}%}'
+    fg_color_red='%{%F{1}%}'
     #end_color='%{%f%k%}%{%K{#2d2d2d}%}'
     end_color='%{%f%k%}'
     end_color_red='%{%f}'
@@ -359,11 +360,11 @@ if [ "$color_prompt" = yes ]; then
         ZSH_HIGHLIGHT_STYLES[bracket-level-5]=fg=cyan
         ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=standout
         ZSH_HIGHLIGHT_STYLES[alias]=fg=magenta
-        ZSH_HIGHLIGHT_REGEXP+=('sudo' bg=#c60505,fg=yellow,bold)
-        ZSH_HIGHLIGHT_REGEXP+=('sudo' bg=#c60505,fg=yellow,bold)
-        ZSH_HIGHLIGHT_REGEXP+=('rm(\s+-[^\s]+|\s+--[^\s]+)*' bg=#c60505,fg=yellow,bold)
-        ZSH_HIGHLIGHT_REGEXP+=('sudo\s+rm(\s+-[^\s]+|\s+--[^\s]+)*' bg=#c60505,fg=yellow,bold)
-        ZSH_HIGHLIGHT_REGEXP+=('\$\([^\)]*rm[^\)]*\)|`[^`]*rm[^`]*`' bg=#c60505,fg=yellow,bold)
+        ZSH_HIGHLIGHT_REGEXP+=('sudo' bg=red,fg=black,bold)
+        ZSH_HIGHLIGHT_REGEXP+=('sudo' bg=red,fg=yellow,bold)
+        ZSH_HIGHLIGHT_REGEXP+=('rm(\s+-[^\s]+|\s+--[^\s]+)*' bg=red,fg=yellow,bold)
+        ZSH_HIGHLIGHT_REGEXP+=('sudo\s+rm(\s+-[^\s]+|\s+--[^\s]+)*' bg=red,fg=yellow,bold)
+        ZSH_HIGHLIGHT_REGEXP+=('\$\([^\)]*rm[^\)]*\)|`[^`]*rm[^`]*`' bg=red,fg=yellow,bold)
     fi
 
     # ---
@@ -587,7 +588,7 @@ function mkt() {
 " "$PWD" "$fname"
 
     # Create directory structure
-    if ! mkdir -p "$fname"/{recon/{nmap,tcp,udp,sctp},loot,xploit/{bx,px}/{cve,script,payload,misc}} 2>/dev/null; then
+    if ! mkdir -p "$fname"/{recon,loot,exploit} 2>/dev/null; then
         echo >&2 "Error: Failed to create directory structure"
         return 2
     fi
@@ -629,12 +630,6 @@ function macc(){
     sudo ifconfig $1 down
     sudo macchanger -A $1
     sudo ifconfig $1 up
-}
-
-function wow(){
-    sudo ifconfig wlan0 down
-    sudo macchanger -m 14:3e:60:32:1d:21 wlan0
-    sudo ifconfig wlan0 up
 }
 
 function rmk() {

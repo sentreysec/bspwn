@@ -73,7 +73,7 @@ install_packages() {
         btm btop htop iftop moreutils shellcheck scrub pcmanfm
 
         # Desktop Environment & Window Manager
-        bspwm i3lock-color picom polybar rofi sxhkd xinput
+        bspwm picom polybar rofi sxhkd xinput
 
         # Terminal Utilities
         bat fastfetch gping kitty lsd neovim xclip xsel
@@ -85,13 +85,13 @@ install_packages() {
         kdeconnect vnstat
 
         # Security & Privacy
-        apg pwgen betterlockscreen slock xss-lock
+        apg pwgen slock xss-lock
 
         # Notifications & Appearance
         dmenu dunst libnotify-bin lxappearance pavucontrol pamixer pasystray network-manager network-manager-gnome cbatticon
 
         # Miscellaneous Utilities
-        brightnessctl calc chrony ncal ranger redshift translate-shell zathura xcalib wmctrl acpid xsettingsd pulseaudio-utils
+        brightnessctl calc chrony ncal ranger redshift translate-shell zathura xcalib wmctrl acpid xsettingsd pulseaudio-utils hsetroot pipewire pipewire-pulse pipewire-alsa wireplumber syndaemon
         
         # drive backup
         rclone

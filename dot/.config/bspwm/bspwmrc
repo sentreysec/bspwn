@@ -8,7 +8,7 @@ export XDG_CURRENT_DESKTOP=bspwm  # or "KDE" if needed for some apps
 export XDG_DATA_DIRS="/usr/share:/usr/local/share:$HOME/.local/share"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK_THEME=Flat-Remix-GTK-Red-Darkest
-export QT_STYLE_OVERRIDE=Fusion
+#export QT_STYLE_OVERRIDE=Fusion
 gsettings set org.gnome.desktop.interface icon-theme 'Flat-Remix-Red-Dark'
 
 # apt without dialogs

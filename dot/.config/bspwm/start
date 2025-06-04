@@ -17,6 +17,7 @@
 # dynamic
 #feh --bg-fill ~/Pictures/wallpapers/x.png
 hsetroot -solid "#9d0000" -center "$HOME/.config/bspwm/_img/seraphw.png" 
+#hsetroot -solid "#9d0000"
 
 
 function _background(){
@@ -44,7 +45,7 @@ function _background(){
 
 ### Mouse and Touchpad Settings
 # TrackPoint settings
-xinput set-prop 'TPPS/2 IBM TrackPoint' 'libinput Accel Speed' 0.1 &
+xinput set-prop 'TPPS/2 IBM TrackPoint' 'libinput Accel Speed' -0.8 &
 
 # Touchpad settings for T470
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' -0.1 &
@@ -55,6 +56,8 @@ xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1 &
 
 # Disable touchpad while typing
 xinput set-prop 'SynPS/2 Synaptics TouchPad' "libinput Disable While Typing Enabled" 1 &
+#syndaemon -i 2.0 -d
+
 
 ### System Settings
 # Disable beep sound
@@ -107,3 +110,4 @@ for process in "${process_list[@]}"; do
 done
 
 ############################################################
+redshift -P -O 4500
