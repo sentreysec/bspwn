@@ -871,4 +871,4 @@ export TERM=xterm-256color
 export PATH="$PATH:/usr/local/zig"
 ### capture the flag variables ###
 export lhost="$(get_ipaddr)"
-export rhost="10.129.221.21"
+export rhost="10.129.191.163"
