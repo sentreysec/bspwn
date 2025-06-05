@@ -1,5 +1,5 @@
 configuration {
-	font:							"Terminess Nerd Font Mono Bold 22";
+	font:							"Fira Code Nerd Font Mono Bold 22";
     disable-history:                false;
     fullscreen:                     false;
 	hide-scrollbar: 				true;

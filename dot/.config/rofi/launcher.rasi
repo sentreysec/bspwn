@@ -8,7 +8,7 @@
  */
 
 configuration {
-  font: "Terminess Nerd Font Mono Bold 24";
+  font: "Fira Code Nerd Font Mono Bold 20";
   terminal: "kitty";
   drun {
     display-name: "🔎";

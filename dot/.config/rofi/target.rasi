@@ -16,7 +16,7 @@
     
     
     /* Typography */
-    font:           "Terminess Nerd Font Mono Bold 22";
+    font:           "Fira Code Nerd Font Mono Bold 22";
 }
 
 window {
