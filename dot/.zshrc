@@ -454,6 +454,7 @@ alias rhost='setg rhost'
 alias rport='setg rport'
 alias lhost='setg lhost'
 alias lport='setg lport'
+alias root='sudo su'
 
 # --- functions ---
 

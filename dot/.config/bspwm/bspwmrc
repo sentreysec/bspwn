@@ -9,7 +9,7 @@ export XDG_DATA_DIRS="/usr/share:/usr/local/share:$HOME/.local/share"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK_THEME=Flat-Remix-GTK-Red-Darkest
 #export QT_STYLE_OVERRIDE=Fusion
-gsettings set org.gnome.desktop.interface icon-theme 'Flat-Remix-Red-Dark'
+#gsettings set org.gnome.desktop.interface icon-theme 'Flat-Remix-Red-Dark'
 
 # apt without dialogs
 export DEBIAN_FRONTEND=noninteractive
@@ -49,7 +49,7 @@ bspc rule -a "Maltego state"=floating #rectangle=1280x800+160+50
 bspc rule -a "tk" state=floating 
 bspc rule -a "Tk" state=floating 
 bspc rule -a "megasync" state=tiled
-bspc rule -a "pavucontrol" state=floating rectangle=1280x800+160+50
+#bspc rule -a "pavucontrol" state=floating rectangle=1280x800+160+50
 bspc rule -a "Burp Suite Community Edition" state=floating #rectangle=1280x800+160+50
 bspc rule -a "burp-StartBurp" title="Settings" state=floating #rectangle=1286x700+155+112
 bspc rule -a "Color_picker_gui.py" state=floating rectangle=400x400
