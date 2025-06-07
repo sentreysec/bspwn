@@ -66,8 +66,6 @@ xset -b
 # Keyboard repeat rate
 xset r rate 150 25
 
-# redshift -O 4500
-
 # Enable DPMS (timeouts in seconds)
 # this setting doesn't suspend or shutdowns the system only the display
 xset dpms 150 300 600  # display-dims, display turns off, display powered off
@@ -110,4 +108,4 @@ for process in "${process_list[@]}"; do
 done
 
 ############################################################
-redshift -P -O 4500
+redshift -P -O 3500
