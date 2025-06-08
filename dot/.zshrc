@@ -38,9 +38,9 @@ bindkey '^[[F' end-of-line                        # end
 bindkey '^[[Z' undo                               # shift + tab undo
 
 # --- Completion ---
-#if [ -f /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
-#    . /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-#fi
+if [ -f /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
+    . /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+fi
 
 
 autoload -Uz compinit
@@ -484,6 +484,11 @@ alias lport='setg lport'
 alias root='sudo su'
 
 # --- functions ---
+
+function colors()
+{
+  bash "$HOME/.config/kitty/colors.sh"
+}
 
 function apt()
 {
