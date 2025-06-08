@@ -38,9 +38,9 @@ bindkey '^[[F' end-of-line                        # end
 bindkey '^[[Z' undo                               # shift + tab undo
 
 # --- Completion ---
-if [ -f /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
-    . /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-fi
+#if [ -f /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
+#    . /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#fi
 
 
 autoload -Uz compinit
