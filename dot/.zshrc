@@ -95,8 +95,9 @@ if [ "$color_prompt" = yes ]; then
     end_color_red='%{%f}'
 
 
-    # Initialize prompt style
-    PROMPT_STYLE=detailed
+# Initialize prompt style
+    #PROMPT_STYLE=detailed
+    PROMPT_STYLE=ipdir
 
     # Enhanced IP detection logic that integrates with .current_ip file
     get_ipaddr() {
@@ -253,15 +254,42 @@ if [ "$color_prompt" = yes ]; then
           esac
       }
 
+## Toggle prompt styles
+#    toggle_prompt() {
+#        case $PROMPT_STYLE in
+#            detailed) PROMPT_STYLE=ipdir ;;
+#            ipdir) PROMPT_STYLE=dir ;;
+#            dir) PROMPT_STYLE=minimal ;;
+#            *) PROMPT_STYLE=detailed ;;
+#        esac
+#        update_prompt
+#        zle reset-prompt
+#    }
+#
+#    zle -N toggle_prompt
+#    bindkey '^P' toggle_prompt
+#
+#    # Toggle prompt styles in reverse order
+#    toggle_prompt_reverse() {
+#        case $PROMPT_STYLE in
+#            dir) PROMPT_STYLE=ipdir ;;
+#            ipdir) PROMPT_STYLE=detailed ;;
+#            detailed) PROMPT_STYLE=minimal ;;
+#            *) PROMPT_STYLE=dir ;; # Fallback to `dir` if PROMPT_STYLE is not set
+#        esac
+#        update_prompt
+#        zle reset-prompt
+#    }
+#    zle -N toggle_prompt_reverse
+#    bindkey '^[^P' toggle_prompt_reverse
 
-
-    # Toggle prompt styles
+# Toggle prompt styles wo detailed
     toggle_prompt() {
         case $PROMPT_STYLE in
-            detailed) PROMPT_STYLE=ipdir ;;
+            #detailed) PROMPT_STYLE=ipdir ;;
             ipdir) PROMPT_STYLE=dir ;;
             dir) PROMPT_STYLE=minimal ;;
-            *) PROMPT_STYLE=detailed ;;
+            *) PROMPT_STYLE=ipdir ;;
         esac
         update_prompt
         zle reset-prompt
@@ -274,8 +302,7 @@ if [ "$color_prompt" = yes ]; then
     toggle_prompt_reverse() {
         case $PROMPT_STYLE in
             dir) PROMPT_STYLE=ipdir ;;
-            ipdir) PROMPT_STYLE=detailed ;;
-            detailed) PROMPT_STYLE=minimal ;;
+            ipdir) PROMPT_STYLE=minimal ;;
             *) PROMPT_STYLE=dir ;; # Fallback to `dir` if PROMPT_STYLE is not set
         esac
         update_prompt
@@ -284,7 +311,7 @@ if [ "$color_prompt" = yes ]; then
     zle -N toggle_prompt_reverse
     bindkey '^[^P' toggle_prompt_reverse
 
-    # --- Transient Prompt ---
+# --- Transient Prompt ---
     zle-line-init() {
         emulate -L zsh
         [[ $CONTEXT == start ]] || return 0
@@ -589,7 +616,7 @@ function mkt() {
 " "$PWD" "$fname"
 
     # Create directory structure
-    if ! mkdir -p "$fname"/{recon,loot,exploit} 2>/dev/null; then
+    if ! mkdir -p "$fname"/{recon/nmap,loot,exploit} 2>/dev/null; then
         echo >&2 "Error: Failed to create directory structure"
         return 2
     fi
