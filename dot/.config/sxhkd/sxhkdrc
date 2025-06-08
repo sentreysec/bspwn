@@ -7,6 +7,20 @@
 #super + F4
 #  thunar
 
+# toggle touchpad
+
+# Toggle Touchpad
+super + e
+    enabled=$(xinput list-props 'SynPS/2 Synaptics TouchPad'  | grep 'Device Enabled'|tr -d "\t"|cut -d ":" -f2); \
+    if [ "$enabled" -eq 1 ]; then \
+        xinput disable 'SynPS/2 Synaptics TouchPad'; \
+        notify-send -u low "Touchpad: DISABLED"; \
+    else \
+        xinput enable 'SynPS/2 Synaptics TouchPad'; \
+        notify-send -u low "Touchpad: ENABLED"; \
+    fi
+
+# firefox
 super + shift + f
   firefox
 
