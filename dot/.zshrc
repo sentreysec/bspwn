@@ -86,14 +86,22 @@ fi
 if [ "$color_prompt" = yes ]; then
     # --- Prompt Configuration ---
     # Define ANSI color codes using tput
-    bg_color='%{%K{#760000}%}'
-    fg_color='%{%F{#ced4da}%}'
+    #bg_color='%{%K{#760000}%}'
+    #fg_color='%{%F{#ced4da}%}'
     #fg_color_red='%{%F{#ff0000}%}'
-    fg_color_red='%{%F{1}%}'
-    #end_color='%{%f%k%}%{%K{#2d2d2d}%}'
-    end_color='%{%f%k%}'
-    end_color_red='%{%f}'
+    #fg_color_red='%{%F{1}%}'
+    #bg_color_red='%{%K{1}%}'
 
+#    FGCOLOR='%{%B%F{0}%}'
+#    BGCOLOR='%{%K{1}%}'
+
+    FGCOLOR='%{%B%F{1}%}'
+    BGCOLOR=''
+    #end_color='%{%f%k%}%{%K{#2d2d2d}%}'
+    #end_color='%{%f%k%}'
+    #end_color_red='%{%f}'
+
+    ENDCOLOR='%{%b%f%k%}'
 
 # Initialize prompt style
     #PROMPT_STYLE=detailed
@@ -138,7 +146,6 @@ if [ "$color_prompt" = yes ]; then
       echo "offline"
       return 0
     }
-
 
     # Function to update the current IP configuration file
     update_ip_config() {
@@ -235,21 +242,21 @@ if [ "$color_prompt" = yes ]; then
           case $PROMPT_STYLE in
               detailed)
                   local ipaddr=$(get_ipaddr)
-                  #PROMPT="${bg_color}${fg_color}[%n@$ipaddr:\$(shorten_path)]${symbol}${end_color}"
-                  PROMPT="${fg_color_red}[%n${symbol}$ipaddr:\$(shorten_path)]%(#.#.$)${end_color}"
+                  #PROMPT="${bg_color}${fg_color}[%n@$ipaddr:\$(shorten_path)]${symbol}${ENDCOLOR}"
+                  PROMPT="${BGCOLOR}${FGCOLOR}[%n${symbol}$ipaddr:\$(shorten_path)]%(#.#.$)${ENDCOLOR}"
                   ;;
               ipdir)
                   local ipaddr=$(get_ipaddr)
-                  #PROMPT="${bg_color}${fg_color}[$ipaddr:\$(shorten_path)]${symbol}${end_color}"
-                  PROMPT="${fg_color_red}[$ipaddr:\$(shorten_path)]%(#.#.$)${end_color}"
+                  #PROMPT="${bg_color}${fg_color}[$ipaddr:\$(shorten_path)]${symbol}${ENDCOLOR}"
+                  PROMPT="${BGCOLOR}${FGCOLOR}[$ipaddr:\$(shorten_path)]%(#.#.$)${ENDCOLOR}"
                   ;;
               dir)
-                  #PROMPT="${bg_color}${fg_color}[\$(shorten_path)]${symbol}${end_color}"
-                  PROMPT="${fg_color_red}[\$(shorten_path)]%(#.#.$)${end_color}"
+                  #PROMPT="${bg_color}${fg_color}[\$(shorten_path)]${symbol}${ENDCOLOR}"
+                  PROMPT="${BGCOLOR}${FGCOLOR}[\$(shorten_path)]%(#.#.$)${ENDCOLOR}"
                   ;;
               minimal)
-                  #PROMPT="${bg_color}${fg_color}${symbol}${end_color}"
-                  PROMPT="${fg_color_red}%(#.#.$)${end_color}"
+                  #PROMPT="${bg_color}${fg_color}${symbol}${ENDCOLOR}"
+                  PROMPT="${BGCOLOR}${FGCOLOR}%(#.#.$)${ENDCOLOR}"
                   ;;
           esac
       }
@@ -325,7 +332,7 @@ if [ "$color_prompt" = yes ]; then
         done
 
         local saved_prompt=$PROMPT
-        PROMPT="${fg_color_red}%(#.#.$)${end_color}"
+        PROMPT="${FGCOLOR}%(#.#.$)${ENDCOLOR}"
         zle .reset-prompt
         PROMPT=$saved_prompt
 
