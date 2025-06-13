@@ -8,8 +8,6 @@ export XDG_CURRENT_DESKTOP=bspwm  # or "KDE" if needed for some apps
 export XDG_DATA_DIRS="/usr/share:/usr/local/share:$HOME/.local/share"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK_THEME=Flat-Remix-GTK-Red-Darkest
-#export QT_STYLE_OVERRIDE=Fusion
-#gsettings set org.gnome.desktop.interface icon-theme 'Flat-Remix-Red-Dark'
 
 # apt without dialogs
 export DEBIAN_FRONTEND=noninteractive
@@ -23,7 +21,7 @@ export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/e
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
 #border colors
-bspc config focused_border_color "#9d0000"
+bspc config focused_border_color "#770000"
 
 #border width, gap, ratio etc...
 bspc config border_width         3 

@@ -443,7 +443,7 @@ fi
 
 
 # --- Aliases ---
-alias ls='lsd --icon never --group-directories-first'
+alias ls='lsd -v --icon never --group-directories-first'
 alias ll='ls -lh'
 alias lv='\ls -v1 '
 alias la='ls -a1'
@@ -492,32 +492,7 @@ alias root='sudo su'
 
 # --- functions ---
 
-function banner(){
-#!/bin/bash
 
-clear
-
-text="
-/\\         /\\
-/  \\_/\\_/\\_/  \\
-/_---_\\·_·/_---_\\
-/       ' '       \\
-"
-
-# Get terminal width
-cols=$(tput cols)
-
-# Center each line
-while IFS= read -r line; do
-    padding=$(( (cols - ${#line}) / 2 ))
-    printf "%*s" $padding ""
-    tput bold
-    tput setaf 1  # Red color
-    printf "%s" "$line"
-    tput sgr0     # Reset formatting
-    printf "\n"
-done <<< "$text"
-}
 
 function colors()
 {
@@ -925,7 +900,6 @@ unsetg() {
 }
 
 PROMPT_EOL_MARK=''
-banner
 
 # exports
 export PATH=$PATH:$HOME:/opt/bin:$HOME/.local/bin:/usr/bin/ruby3.0:$HOME/.go/bin:$HOME/.cargo/bin
@@ -939,4 +913,3 @@ export TERM=xterm-256color
 export PATH="$PATH:/usr/local/zig"
 ### capture the flag variables ###
 export lhost="$(get_ipaddr)"
-export rhost="10.10.11.72"
