@@ -457,7 +457,7 @@ alias grepi='grep -i'
 alias rm='rm -Iv'
 alias ff='fastfetch --logo none --color red'
 alias cat='batcat --paging=never --style=plain'
-alias trans='trans --brief'
+alias tra='trans --brief'
 alias ris="ristretto"
 alias kp="kolourpaint"
 alias torwho="whois -h torwhois.com"
@@ -911,5 +911,6 @@ export PATH="$HOME/.gems/bin:$PATH"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export TERM=xterm-256color
 export PATH="$PATH:/usr/local/zig"
+export PATH="$PATH:/snap/bin"
 ### capture the flag variables ###
 export lhost="$(get_ipaddr)"

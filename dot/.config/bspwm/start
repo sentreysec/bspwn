@@ -44,7 +44,7 @@ function _background(){
 
 ### Mouse and Touchpad Settings
 # TrackPoint settings
-xinput set-prop 'TPPS/2 IBM TrackPoint' 'libinput Accel Speed' -0.5 &
+xinput set-prop 'TPPS/2 IBM TrackPoint' 'libinput Accel Speed' -0.9 &
 
 # Touchpad settings for T470
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' -0.1 &
@@ -107,4 +107,4 @@ for process in "${process_list[@]}"; do
 done
 
 ############################################################
-redshift -P -O 2500
+# redshift -P -O 2500
