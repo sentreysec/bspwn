@@ -341,6 +341,7 @@ if [ "$color_prompt" = yes ]; then
         ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern line regexp)
         ZSH_HIGHLIGHT_STYLES[default]=none
         #ZSH_HIGHLIGHT_STYLES[line]=bold,standout # bold text, white background
+        ZSH_HIGHLIGHT_STYLES[line]=bold
         ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,underline
         ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=cyan
         ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,underline
