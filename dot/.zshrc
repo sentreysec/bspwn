@@ -23,7 +23,6 @@ setopt hist_verify
 # --- complete history ---
 alias history="history 0"
 
-
 # --- Key bindings ---
 bindkey -e                                        # emacs key bindings
 bindkey ' ' magic-space                           # history expansion on space
@@ -86,21 +85,8 @@ fi
 if [ "$color_prompt" = yes ]; then
     # --- Prompt Configuration ---
     # Define ANSI color codes using tput
-    #bg_color='%{%K{#760000}%}'
-    #fg_color='%{%F{#ced4da}%}'
-    #fg_color_red='%{%F{#ff0000}%}'
-    #fg_color_red='%{%F{1}%}'
-    #bg_color_red='%{%K{1}%}'
-
-#    FGCOLOR='%{%B%F{0}%}'
-#    BGCOLOR='%{%K{1}%}'
-
     FGCOLOR='%{%B%F{1}%}'
     BGCOLOR=''
-    #end_color='%{%f%k%}%{%K{#2d2d2d}%}'
-    #end_color='%{%f%k%}'
-    #end_color_red='%{%f}'
-
     ENDCOLOR='%{%b%f%k%}'
 
 # Initialize prompt style
@@ -233,29 +219,31 @@ if [ "$color_prompt" = yes ]; then
       # Update your update_prompt function
       # Inside the update_prompt function
       update_prompt() {
-          # Determine symbol based on user
+          # Determine symbol & prompt based on user
           local symbol='@'
+          local FGCOLOR='%{%B%F{1}%}'
+          local BGCOLOR=''
+          local ENDCOLOR='%{%b%f%k%}'
           if [[ $EUID -eq 0 ]]; then
               symbol='󰚌'
+              FGCOLOR='%{%B%F{0}%}'
+              BGCOLOR='%{%K{1}%}'
+              ENDCOLOR='%{%b%f%k%}'
           fi
 
           case $PROMPT_STYLE in
               detailed)
                   local ipaddr=$(get_ipaddr)
-                  #PROMPT="${bg_color}${fg_color}[%n@$ipaddr:\$(shorten_path)]${symbol}${ENDCOLOR}"
                   PROMPT="${BGCOLOR}${FGCOLOR}[%n${symbol}$ipaddr:%~]%(#.#.$)${ENDCOLOR}"
                   ;;
               ipdir)
                   local ipaddr=$(get_ipaddr)
-                  #PROMPT="${bg_color}${fg_color}[$ipaddr:\$(shorten_path)]${symbol}${ENDCOLOR}"
                   PROMPT="${BGCOLOR}${FGCOLOR}[$ipaddr:%~]%(#.#.$)${ENDCOLOR}"
                   ;;
               dir)
-                  #PROMPT="${bg_color}${fg_color}[\$(shorten_path)]${symbol}${ENDCOLOR}"
                   PROMPT="${BGCOLOR}${FGCOLOR}[%~]%(#.#.$)${ENDCOLOR}"
                   ;;
               minimal)
-                  #PROMPT="${bg_color}${fg_color}${symbol}${ENDCOLOR}"
                   PROMPT="${BGCOLOR}${FGCOLOR}%(#.#.$)${ENDCOLOR}"
                   ;;
           esac
@@ -411,9 +399,6 @@ if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 fi
 
-
-
-
 # --- LS colors ---
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -451,7 +436,6 @@ alias l='ls -1v'
 alias lt='ls -1t'
 alias lla='ls -lha'
 alias lra='ls -lRa'
-
 alias igrep='grep -i'
 alias grepi='grep -i'
 alias rm='rm -Iv'
@@ -483,7 +467,6 @@ alias btop='sudo btop'
 alias htop='sudo htop'
 alias top='sudo top'
 alias show-options="show_options"
-#alias rsync="rsync -rahzc --info=progress2"
 alias rhost='setg rhost'
 alias rport='setg rport'
 alias lhost='setg lhost'
@@ -491,8 +474,6 @@ alias lport='setg lport'
 alias root='sudo su'
 
 # --- functions ---
-
-
 
 function colors()
 {
@@ -846,7 +827,6 @@ setg() {
         echo "Updated ~/.current_target with rhost value"
     fi
 }
-
 
 unsetg() {
     if [ $# -ne 1 ]; then
