@@ -107,4 +107,5 @@ for process in "${process_list[@]}"; do
 done
 
 ############################################################
-# redshift -P -O 2500
+redshift -x
+redshift -P -O 2500
