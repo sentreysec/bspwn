@@ -137,13 +137,13 @@ install_gtk_theme(){
 }
 
 install_fonts() {
-    local fonts=("FiraCode" "Hack" "Terminus")
+    local fonts=("FiraCode" "Hack" "Terminus" "0xProto")
     local tmp_dir="/dev/shm/nerd-fonts"
 
     mkdir -p "$tmp_dir"
 
     for font in "${fonts[@]}"; do
-        wget -q "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/$font.zip" -O "$tmp_dir/$font.zip" &&
+        wget -q "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/$font.zip" -O "$tmp_dir/$font.zip" &&
         unzip -q "$tmp_dir/$font.zip" -d "/usr/share/fonts/$font"
     done
 
