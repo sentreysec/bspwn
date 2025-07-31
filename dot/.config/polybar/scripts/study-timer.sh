@@ -180,7 +180,7 @@ get_status() {
             local pause_start=$(cat "${TIMER_FILE}_pause_start" 2>/dev/null || echo "$current_time")
             local pause_duration=$((current_time - pause_start))
             if [[ $pause_duration -gt 300 ]]; then  # 5 minutes
-                prefix="⏸️ "
+                prefix="x"
             fi
             ;;
         "stopped")
@@ -192,12 +192,12 @@ get_status() {
             icon="$PLAY_ICON"
             color="$INACTIVE_COLOR"
             time_display="00:00"
-            prefix="✓ "
+            prefix="o"
             ;;
     esac
     
     # Output format: [TIME] [TOGGLE_BUTTON] [RESET_BUTTON]
-    echo "%{F$color}$prefix$time_display %{A1:$0 toggle:}$icon%{A} %{A1:$0 reset:}$RESET_ICON%{A}%{F-}"
+    echo "%{F$color}$prefix$time_display%{A1:$0 toggle:}$icon%{A}%{A1:$0 reset:}$RESET_ICON%{A}%{F-}"
 }
 
 toggle_timer() {
