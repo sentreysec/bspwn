@@ -47,7 +47,7 @@ def print_status():
     
     # Shift indicator (red when active)
     if shift_pressed:
-        output += "%{B#bf616a}%{F#000000} 󰜷 %{F-}%{B-}"
+        output += "%{B#d08770}%{F#000000} 󰜷 %{F-}%{B-}"
     
     # Ctrl indicator (blue when active)
     elif ctrl_pressed:
@@ -58,7 +58,7 @@ def print_status():
     
     # Super indicator (yellow when active)
     elif super_pressed:
-        output += "%{B#8A3840}%{F#000000} 󰘳 %{F-}%{B-}"
+        output += "%{B#bf616a}%{F#000000} 󰘳 %{F-}%{B-}"
     else:
         output += "%{F#666666}  %{F-}"
     
