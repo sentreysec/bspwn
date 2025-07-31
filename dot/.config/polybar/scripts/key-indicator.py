@@ -58,7 +58,7 @@ def print_status():
     
     # Super indicator (yellow when active)
     elif super_pressed:
-        output += "%{B#e64553}%{F#000000} 󰘳 %{F-}%{B-}"
+        output += "%{B#8A3840}%{F#000000} 󰘳 %{F-}%{B-}"
     else:
         output += "%{F#666666}  %{F-}"
     
