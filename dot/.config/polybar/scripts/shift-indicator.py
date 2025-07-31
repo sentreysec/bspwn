@@ -22,10 +22,10 @@ def on_release(key):
 def print_status():
     if shift_pressed:
         # Active: highlighted background
-        print(f"%{{B#ff0000}}%{{F#121212}}[]%{{F-}}%{{B-}}", flush=True)
+        print(f"%{{B#ff0000}}%{{F#121212}} 󰜷 %{{F-}}%{{B-}}", flush=True)
     else:
         # Inactive: subtle appearance
-        print(f"%{{F#666666}}[]%{{F-}}", flush=True)
+        print(f"%{{F#666666}} 󰜷 %{{F-}}", flush=True)
 
 
 # Initial state
