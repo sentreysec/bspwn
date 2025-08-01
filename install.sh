@@ -91,7 +91,7 @@ install_packages() {
         dmenu dunst libnotify-bin lxappearance pavucontrol pamixer pasystray network-manager network-manager-gnome cbatticon
 
         # Miscellaneous Utilities
-        brightnessctl calc chrony ncal ranger redshift translate-shell zathura xcalib wmctrl acpid xsettingsd pulseaudio-utils hsetroot pipewire pipewire-pulse pipewire-alsa wireplumber syndaemon
+        xdotool brightnessctl calc chrony ncal ranger redshift translate-shell zathura xcalib wmctrl acpid xsettingsd pulseaudio-utils hsetroot pipewire pipewire-pulse pipewire-alsa wireplumber syndaemon
         
         # drive backup
         rclone
