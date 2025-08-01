@@ -35,7 +35,11 @@ super + d
 
 #switch between window
 super + Tab
-	rofi -show window -theme "$HOME/.config/rofi/launcher.rasi"
+	rofi -show window -theme "$HOME/.config/rofi/switcher.rasi"
+
+# run program
+super + r
+  rofi -show run -theme "$HOME/.config/rofi/run.rasi"
 
 # Reload sxhkd (with status checking)
 alt + shift + Escape
@@ -101,7 +105,7 @@ super + alt +  {Left,Right}
 	bspc node -d {prev,next} -f  
 
 #rotate
-super + r
+super + shift + r
 	bspc node @/ -R 90
 
 #lock the screen
