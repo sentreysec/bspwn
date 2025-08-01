@@ -30,16 +30,19 @@ super + Return
 
 # program launcher
 super + d
-	rofi -show drun -theme "$HOME/.config/rofi/launcher.rasi"
-	#dmenu_run
+	rofi -show drun -theme "$HOME/.config/rofi/launch.rasi"
 
 #switch between window
 super + Tab
-	rofi -show window -theme "$HOME/.config/rofi/switcher.rasi"
+	rofi -show window -theme "$HOME/.config/rofi/launch.rasi"
 
 # run program
 super + r
-  rofi -show run -theme "$HOME/.config/rofi/run.rasi"
+  rofi -show run -theme "$HOME/.config/rofi/launch.rasi"
+
+# file explorer (rofi)
+super + f
+  rofi -show filebrowser -theme "$HOME/.config/rofi/launch.rasi"
 
 # Reload sxhkd (with status checking)
 alt + shift + Escape
@@ -200,7 +203,7 @@ super + g
 #=====================STATE FLAGS======================
 
 # set the window state
-super + {t,shift + t,f}
+super + {t,shift + t,z}
 	bspc node -t {tiled,pseudo_tiled,fullscreen}
 
 super + s 
