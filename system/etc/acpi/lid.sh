@@ -3,36 +3,70 @@
 # Log execution
 echo "[$(date)] Lid event triggered (lock + suspend)" >> /tmp/lid.log
 
-# Detect all X displays
-XDISPLAYS=($(ls /tmp/.X11-unix/ | grep -oP 'X\d+' | sed 's/X/:/'))
+# Function to find the active user
+get_active_user() {
+    # Try multiple methods to find the active user
+    local user=""
+    
+    # 1. Try loginctl (systemd)
+    user=$(loginctl list-sessions --no-legend | awk '($3 == "tty" || $3 == "x11") {print $2}' | head -n1)
+    
+    # 2. Fallback to who
+    [ -z "$user" ] && user=$(who | grep -m1 "(:[0-9])" | awk '{print $1}')
+    
+    # 3. Fallback to last X11 user
+    [ -z "$user" ] && user=$(ps -eo user,comm | awk '/Xorg/ {print $1}' | head -n1)
+    
+    echo "$user"
+}
 
-for XDISPLAY in "${XDISPLAYS[@]}"; do
-    XUSER=$(ps -eo user,args | grep "X.*$XDISPLAY" | grep -m1 -v grep | awk '{print $1}')
-    [ -z "$XUSER" ] && continue
+ACTIVE_USER=$(get_active_user)
+[ -z "$ACTIVE_USER" ] && ACTIVE_USER=$(logname 2>/dev/null || echo "")
 
-    XHOME=$(getent passwd "$XUSER" | cut -d: -f6)
-    XAUTH=""
+if [ -z "$ACTIVE_USER" ]; then
+    echo "Error: Could not determine active user" >> /tmp/lid.log
+    exit 1
+fi
 
-    # Check LY's custom Xauthority first (for root)
-    [ "$XUSER" = "root" ] && [ -f "/run/user/0/lyxauth" ] && XAUTH="/run/user/0/lyxauth"
+# Get user info
+USER_HOME=$(getent passwd "$ACTIVE_USER" | cut -d: -f6)
+USER_ID=$(id -u "$ACTIVE_USER")
 
-    # Fallback to standard locations
-    [ -z "$XAUTH" ] && XAUTH=$(find "$XHOME" /run/user/$(id -u "$XUSER") -name ".Xauthority" -o -name "lyxauth" 2>/dev/null | head -n1)
-
-    echo "Locking $XUSER on $XDISPLAY (Xauthority: ${XAUTH:-none})" >> /tmp/lid.log
-
-    # Lock screen (replace with your preferred command)
-    if command -v betterlockscreen >/dev/null; then
-        if [ "$XUSER" = "root" ]; then
-            DISPLAY="$XDISPLAY" XAUTHORITY="$XAUTH" betterlockscreen -l &!
-        else
-            su "$XUSER" -c "DISPLAY=$XDISPLAY XAUTHORITY=$XAUTH betterlockscreen -l" &!
-        fi
-        sleep 2  # Ensure lock is fully engaged
-        break    # Exit loop after first successful lock
+# Find Xauthority
+XAUTH=""
+for loc in "$USER_HOME/.Xauthority" "/run/user/$USER_ID/gdm/Xauthority" "/run/user/$USER_ID/.Xauthority"; do
+    if [ -f "$loc" ]; then
+        XAUTH="$loc"
+        break
     fi
 done
 
-# Suspend (now handled by ACPI event)
-echo "Screen locked; suspend will follow." >> /tmp/lid.log
-systemctl suspend
+# Get display
+DISPLAY=":$(ls /tmp/.X11-unix/ | grep -oP 'X\d+' | sed 's/X//' | head -n1)"
+[ -z "$DISPLAY" ] && DISPLAY=":0"
+
+echo "Locking $ACTIVE_USER on $DISPLAY (Xauthority: ${XAUTH:-none})" >> /tmp/lid.log
+
+# Lock screen
+if command -v slock >/dev/null; then
+    # Run slock as the active user
+    if [ "$(id -u)" = "0" ]; then
+        sudo -u "$ACTIVE_USER" env DISPLAY="$DISPLAY" XAUTHORITY="$XAUTH" slock &
+    else
+        env DISPLAY="$DISPLAY" XAUTHORITY="$XAUTH" slock &
+    fi
+    
+    # Give slock time to initialize
+    sleep 1
+    
+    # Verify slock is running
+    if ! pgrep -u "$ACTIVE_USER" slock >/dev/null; then
+        echo "Error: slock failed to start" >> /tmp/lid.log
+        exit 1
+    fi
+else
+    echo "Error: slock not found" >> /tmp/lid.log
+    exit 1
+fi
+
+# Extra safety delay
