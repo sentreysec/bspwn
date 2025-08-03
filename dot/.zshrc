@@ -473,6 +473,8 @@ alias rport='setg rport'
 alias lhost='setg lhost'
 alias lport='setg lport'
 alias root='sudo su'
+alias caido='caido > /dev/null 2>&1'
+
 
 # --- functions ---
 
