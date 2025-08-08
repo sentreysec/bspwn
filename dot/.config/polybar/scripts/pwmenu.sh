@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
-dir="$HOME/.config/rofi/pwmenu/"
+# ~/.config/polybar/scripts/pwmenu.sh
+
 uptime=$(uptime -p | sed -e 's/up //g')
 
 # Rofi command with theme
-rofi_command="rofi -theme $dir/powermenu.rasi"
+rofi_command="rofi -theme $HOME/.config/rofi/pwmenu.rasi"
 
 # Options (with standard Unicode/emojis)
-shutdown="⏻ Shutdown"
-reboot="🔄 Restart"
-lock="🔒 Lock"
-suspend="💤 Sleep"
-logout="🚪 Logout"
+shutdown="󰐥 Shutdown"
+reboot=" Restart"
+lock=" Lock"
+suspend="󰒲 Sleep"
+logout=" Logout"
 
 
 # Function: Message dialog
@@ -33,8 +34,8 @@ case "$chosen" in
 		 shutdown -r now
 		;;
 	$lock)
-		if command -v slock &> /dev/null; then
-			slock -l
+		if command -v slock; then
+			slock
 		else
 			msg "Lock command 'slock' not found. Please install it."
 		fi

@@ -91,7 +91,7 @@ install_packages() {
         dmenu dunst libnotify-bin lxappearance pavucontrol pamixer pasystray network-manager network-manager-gnome cbatticon
 
         # Miscellaneous Utilities
-        xdotool brightnessctl calc chrony ncal ranger redshift translate-shell zathura xcalib wmctrl acpid xsettingsd pulseaudio-utils hsetroot pipewire pipewire-pulse pipewire-alsa wireplumber syndaemon
+        xdotool brightnessctl calc chrony ncal ranger redshift translate-shell zathura xcalib wmctrl acpid xsettingsd pulseaudio-utils hsetroot pipewire pipewire-pulse pipewire-alsa wireplumber 
         
         # drive backup
         rclone
@@ -137,7 +137,7 @@ install_gtk_theme(){
 }
 
 install_fonts() {
-    local fonts=("FiraCode" "Hack" "Terminus" "0xProto")
+    local fonts=("FiraCode" "Hack" "Terminus" "0xProto" "Gohu")
     local tmp_dir="/dev/shm/nerd-fonts"
 
     mkdir -p "$tmp_dir"

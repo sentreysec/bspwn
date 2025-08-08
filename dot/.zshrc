@@ -36,11 +36,26 @@ bindkey '^[[H' beginning-of-line                  # home
 bindkey '^[[F' end-of-line                        # end
 bindkey '^[[Z' undo                               # shift + tab undo
 
-# --- Completion ---
-#if [ -f /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
-#    . /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-#fi
 
+
+# --- custom plugins ---
+
+if [ -f /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
+    . /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+fi
+
+
+#source $HOME/.local/share/fzf-tab/fzf-tab.plugin.zsh
+
+
+source $HOME/.local/share/zsh-copybuffer/zsh-copybuffer.zsh
+source $HOME/.local/share/zsh-notes/zsh-notes.plugin.zsh
+export EDITOR="vim"
+source <(fzf --zsh)
+
+
+
+# ____ End of Custom Plugins Section ___
 
 autoload -Uz compinit
 compinit -d ~/.cache/zcompdump
@@ -371,7 +386,7 @@ if [ "$color_prompt" = yes ]; then
         ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]=fg=magenta
         ZSH_HIGHLIGHT_STYLES[assign]=none
         ZSH_HIGHLIGHT_STYLES[redirection]=fg=yellow
-        ZSH_HIGHLIGHT_STYLES[comment]=fg=black
+        ZSH_HIGHLIGHT_STYLES[comment]=fg=gray
         ZSH_HIGHLIGHT_STYLES[named-fd]=none
         ZSH_HIGHLIGHT_STYLES[numeric-fd]=none
         ZSH_HIGHLIGHT_STYLES[arg0]=fg=cyan
@@ -384,10 +399,10 @@ if [ "$color_prompt" = yes ]; then
         ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=standout
         ZSH_HIGHLIGHT_STYLES[alias]=fg=magenta
         ZSH_HIGHLIGHT_REGEXP+=('sudo' bg=red,fg=black,bold)
-        ZSH_HIGHLIGHT_REGEXP+=('sudo' bg=red,fg=yellow,bold)
-        ZSH_HIGHLIGHT_REGEXP+=('rm(\s+-[^\s]+|\s+--[^\s]+)*' bg=red,fg=yellow,bold)
-        ZSH_HIGHLIGHT_REGEXP+=('sudo\s+rm(\s+-[^\s]+|\s+--[^\s]+)*' bg=red,fg=yellow,bold)
-        ZSH_HIGHLIGHT_REGEXP+=('\$\([^\)]*rm[^\)]*\)|`[^`]*rm[^`]*`' bg=red,fg=yellow,bold)
+        ZSH_HIGHLIGHT_REGEXP+=('sudo' bg=red,fg=black,bold)
+        ZSH_HIGHLIGHT_REGEXP+=('rm(\s+-[^\s]+|\s+--[^\s]+)*' bg=red,fg=black,bold)
+        ZSH_HIGHLIGHT_REGEXP+=('sudo\s+rm(\s+-[^\s]+|\s+--[^\s]+)*' bg=red,fg=black,bold)
+        ZSH_HIGHLIGHT_REGEXP+=('\$\([^\)]*rm[^\)]*\)|`[^`]*rm[^`]*`' bg=red,fg=black,bold)
     fi
 
     # ---
@@ -474,7 +489,8 @@ alias lhost='setg lhost'
 alias lport='setg lport'
 alias root='sudo su'
 alias caido='caido > /dev/null 2>&1'
-
+alias rot13-encode='tr "A-Za-z" "N-ZA-Mn-za-m"'
+alias rot13-decode='tr "A-Za-z" "N-ZA-Mn-za-m"'
 
 # --- functions ---
 

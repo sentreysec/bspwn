@@ -21,8 +21,8 @@ export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/e
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
 #border colors
-# bspc config focused_border_color "#ff0000" # "#770000"
-bspc config focused_border_color "#333333" 
+ bspc config focused_border_color  "#b70000"
+#bspc config focused_border_color "#333333" 
 bspc config normal_border_color "#202124"
 
 #border width, gap, ratio etc...
@@ -64,3 +64,5 @@ xsetroot -cursor_name left_ptr -xcf /usr/share/icons/Adwaita/cursors/left_ptr 32
 xrdb -merge ~/.Xresources
 export XCURSOR_SIZE=32
 export XCURSOR_THEME=Adwaita
+
+vibrant-cli eDP-1 0.3

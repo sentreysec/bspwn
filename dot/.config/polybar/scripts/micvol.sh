@@ -6,9 +6,9 @@ get_mic_status() {
     local muted=$(pactl get-source-mute "$source" | grep -o "yes\|no")
     
     if [ "$muted" = "yes" ]; then
-        echo " 󰍭 "  # or "MIC OFF" or whatever indicator you prefer
+        echo "%{F#c60505} 󰍭 %{F-}"  # or "MIC OFF" or whatever indicator you prefer
     else
-        echo "%{B#e60000} 󰍬 %{B-}"  # or "MIC ON"
+      echo "%{F#000000}%{B#ffff00} 󰍬 %{B-}%{F-}"  # or "MIC ON"
     fi
 }
 
