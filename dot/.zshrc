@@ -39,11 +39,11 @@ bindkey '^[[Z' undo                               # shift + tab undo
 
 
 # --- custom plugins ---
-
-if [ -f /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
-    . /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-fi
-
+#
+#if [ -f /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
+#    . /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#fi
+#
 
 #source $HOME/.local/share/fzf-tab/fzf-tab.plugin.zsh
 
@@ -455,7 +455,6 @@ alias lra='ls -lRa'
 alias igrep='grep -i'
 alias grepi='grep -i'
 alias rm='rm -Iv'
-alias ff='fastfetch --logo none --color red'
 alias cat='batcat --paging=never --style=plain'
 alias tra='trans --brief'
 alias ris="ristretto"
@@ -493,6 +492,22 @@ alias rot13-encode='tr "A-Za-z" "N-ZA-Mn-za-m"'
 alias rot13-decode='tr "A-Za-z" "N-ZA-Mn-za-m"'
 
 # --- functions ---
+
+
+ff ()
+{
+
+fastfetch \
+  --colors-block-width 0 \
+  --colors-block-range-start 0 \
+  --colors-block-range-end 0  \
+  --colors-padding-left 0 \
+  --logo none \
+  --pipe \
+  | grep -vE "\[40m|^$" \
+  | tee /dev/tty | xclip -selection clipboard
+}
+
 
 function colors()
 {
