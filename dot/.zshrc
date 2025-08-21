@@ -100,7 +100,7 @@ fi
 if [ "$color_prompt" = yes ]; then
     # --- Prompt Configuration ---
     # Define ANSI color codes using tput
-    FGCOLOR='%{%B%F{1}%}'
+    FGCOLOR='%{%B%F{11}%}'
     BGCOLOR=''
     ENDCOLOR='%{%b%f%k%}'
 
