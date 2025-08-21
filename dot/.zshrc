@@ -236,7 +236,7 @@ if [ "$color_prompt" = yes ]; then
       update_prompt() {
           # Determine symbol & prompt based on user
           local symbol='@'
-          local FGCOLOR='%{%B%F{1}%}'
+          local FGCOLOR='%{%B%F{11}%}'
           local BGCOLOR=''
           local ENDCOLOR='%{%b%f%k%}'
           if [[ $EUID -eq 0 ]]; then

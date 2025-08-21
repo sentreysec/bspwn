@@ -60,7 +60,7 @@ def print_status():
     elif super_pressed:
         output += "%{B#bf616a}%{F#000000} 󰘳 %{F-}%{B-}"
     else:
-        output += "%{F#b70000} 󰌌 %{F-}"
+        output += "%{F#7c8fa5} 󰌌 %{F-}"
     print(output, flush=True)
 
 print_status()

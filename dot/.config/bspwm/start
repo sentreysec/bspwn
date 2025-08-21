@@ -15,9 +15,9 @@
 #hsetroot -root -solid "#111111"
 #hsetroot -solid "#7f0808" 
 
-#feh --bg-fill ~/Pictures/wpp.png || hsetroot -solid '#770000' # '#121212'
+feh --bg-fill ~/Pictures/wpp.png || hsetroot -solid '#121212'
 #hsetroot -solid "#9d0000" -center "$HOME/.config/bspwm/_img/seraphw.png" 
-hsetroot -solid "#770000"
+#hsetroot -solid "#770000"
 
 
 function _background(){
