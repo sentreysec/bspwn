@@ -4,7 +4,7 @@
 
 # Set screen resolution
 # xrandr -s 1600x900
-#feh --bg-fill $HOME/.config/bspwm/_img/seraph.png
+#feh --bg-fill $HOME/.config/bspwm/_img/img.png
 
 ### Wallpaper
 # Use feh to set image wallpaper, example
@@ -15,10 +15,10 @@
 #hsetroot -root -solid "#111111"
 #hsetroot -solid "#7f0808" 
 
-feh --bg-fill ~/Pictures/wpp.png || hsetroot -solid '#121212'
-#hsetroot -solid "#9d0000" -center "$HOME/.config/bspwm/_img/seraphw.png" 
+#feh --bg-fill ~/Pictures/wpp.png || hsetroot -solid '#121212'
+#hsetroot -solid "#9d0000" -center "$HOME/.config/bspwm/_img/img.png" 
 #hsetroot -solid "#770000"
-
+hsetroot -solid 121212
 
 function _background(){
   # Custom wallpaper path
