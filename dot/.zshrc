@@ -626,7 +626,7 @@ function w64(){
 }
 
 function rsp(){
-  rsync -rhazc --info=progress2 $@
+  sudo rsync -rhazc --info=progress2 $@
 }
 
 function mkt() {
